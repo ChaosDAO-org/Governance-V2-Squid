@@ -1,0 +1,8 @@
+export enum ReferendumStatus {
+  ONGOING = "ONGOING",
+  APPROVED = "APPROVED",
+  REJECTED = "REJECTED",
+  CANCELLED = "CANCELLED",
+  TIMEDOUT = "TIMEDOUT",
+  KILLED = "KILLED",
+}
