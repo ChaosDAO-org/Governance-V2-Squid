@@ -18,6 +18,7 @@ type Transfer @entity {
 
 type Referenda @entity {
   id: ID!
+  track: Int!
   status: ReferendumStatus
 }
 

@@ -10,6 +10,9 @@ export class Referenda {
   @PrimaryColumn_()
   id!: string
 
+  @Column_("int4", {nullable: false})
+  track!: number
+
   @Column_("varchar", {length: 9, nullable: true})
   status!: ReferendumStatus | undefined | null
 }

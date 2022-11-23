@@ -1,5 +1,5 @@
-module.exports = class Data1668636646477 {
-  name = 'Data1668636646477'
+module.exports = class Data1669235105171 {
+  name = 'Data1669235105171'
 
   async up(db) {
     await db.query(`CREATE TABLE "transfer" ("id" character varying NOT NULL, "block_number" integer NOT NULL, "timestamp" TIMESTAMP WITH TIME ZONE NOT NULL, "extrinsic_hash" text, "amount" numeric NOT NULL, "fee" numeric NOT NULL, "from_id" character varying, "to_id" character varying, CONSTRAINT "PK_fd9ddbdd49a17afcbe014401295" PRIMARY KEY ("id"))`)
@@ -10,6 +10,7 @@ module.exports = class Data1668636646477 {
     await db.query(`CREATE INDEX "IDX_0751309c66e97eac9ef1149362" ON "transfer" ("to_id") `)
     await db.query(`CREATE INDEX "IDX_f4007436c1b546ede08a4fd7ab" ON "transfer" ("amount") `)
     await db.query(`CREATE TABLE "account" ("id" character varying NOT NULL, CONSTRAINT "PK_54115ee388cdb6d86bb4bf5b2ea" PRIMARY KEY ("id"))`)
+    await db.query(`CREATE TABLE "referenda" ("id" character varying NOT NULL, "track" integer NOT NULL, "status" character varying(9), CONSTRAINT "PK_f0f6e007527e88aa79a974970f6" PRIMARY KEY ("id"))`)
     await db.query(`ALTER TABLE "transfer" ADD CONSTRAINT "FK_76bdfed1a7eb27c6d8ecbb73496" FOREIGN KEY ("from_id") REFERENCES "account"("id") ON DELETE NO ACTION ON UPDATE NO ACTION`)
     await db.query(`ALTER TABLE "transfer" ADD CONSTRAINT "FK_0751309c66e97eac9ef11493623" FOREIGN KEY ("to_id") REFERENCES "account"("id") ON DELETE NO ACTION ON UPDATE NO ACTION`)
   }
@@ -23,6 +24,7 @@ module.exports = class Data1668636646477 {
     await db.query(`DROP INDEX "public"."IDX_0751309c66e97eac9ef1149362"`)
     await db.query(`DROP INDEX "public"."IDX_f4007436c1b546ede08a4fd7ab"`)
     await db.query(`DROP TABLE "account"`)
+    await db.query(`DROP TABLE "referenda"`)
     await db.query(`ALTER TABLE "transfer" DROP CONSTRAINT "FK_76bdfed1a7eb27c6d8ecbb73496"`)
     await db.query(`ALTER TABLE "transfer" DROP CONSTRAINT "FK_0751309c66e97eac9ef11493623"`)
   }
